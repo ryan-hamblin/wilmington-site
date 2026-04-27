@@ -152,8 +152,8 @@
     #photos { background: var(--sand); }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 240px 240px;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-rows: repeat(3, 220px);
       gap: 8px; margin-top: 2rem;
     }
     .gallery-cell {
@@ -161,19 +161,8 @@
       border-radius: 2px; overflow: hidden; position: relative;
       display: flex; align-items: center; justify-content: center;
     }
-    .gallery-cell.featured { grid-column: span 2; grid-row: span 2; }
-    .gallery-placeholder {
-      text-align: center; color: var(--text-light);
-    }
-    .gallery-placeholder-icon {
-      font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.4; display: block;
-    }
-    .gallery-placeholder p { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+    .gallery-cell.featured { grid-row: span 3; }
     .gallery-cell img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-note {
-      margin-top: 1rem; font-size: 0.85rem; color: var(--text-light);
-      font-style: italic; text-align: center;
-    }
 
     /* ── DETAILS ── */
     #details { background: var(--warm-white); }
@@ -417,7 +406,7 @@
       .details-grid, .location-grid, .avail-layout, .booking-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .pricing-grid { grid-template-columns: 1fr 1fr; }
       .cal-months { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px repeat(5, 160px); }
       .gallery-cell.featured { grid-column: span 2; grid-row: span 1; }
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full { grid-column: span 1; }
@@ -498,47 +487,36 @@
     <div class="divider"></div>
     <div class="gallery-grid">
       <div class="gallery-cell featured">
-        <div class="gallery-placeholder">
-          <span class="gallery-placeholder-icon">
-            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </span>
-          <p>Main Living Area</p>
-        </div>
+        <img src="images/602PineValleyDrive-1.jpg" alt="Exterior front view of 602 Pine Valley Drive">
       </div>
       <div class="gallery-cell">
-        <div class="gallery-placeholder">
-          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </span>
-          <p>Kitchen</p>
-        </div>
+        <img src="images/602PineValleyDrive-14.jpg" alt="Open kitchen and living area">
       </div>
       <div class="gallery-cell">
-        <div class="gallery-placeholder">
-          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </span>
-          <p>Primary Bedroom</p>
-        </div>
+        <img src="images/602PineValleyDrive-18.jpg" alt="Kitchen with granite island and stainless appliances">
       </div>
       <div class="gallery-cell">
-        <div class="gallery-placeholder">
-          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </span>
-          <p>Back Deck</p>
-        </div>
+        <img src="images/602PineValleyDrive-13.jpg" alt="Entryway with hardwood floors">
       </div>
       <div class="gallery-cell">
-        <div class="gallery-placeholder">
-          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </span>
-          <p>Bathroom</p>
-        </div>
+        <img src="images/602PineValleyDrive-39.jpg" alt="Primary bedroom with en-suite bath and TV">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/602PineValleyDrive-40.jpg" alt="Primary bathroom with double vanity and walk-in shower">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/602PineValleyDrive-29.jpg" alt="Second bedroom">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/602PineValleyDrive-32.jpg" alt="Hall bathroom">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/602PineValleyDrive-10.jpg" alt="Back patio with outdoor dining and BBQ grill">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/602PineValleyDrive-35.jpg" alt="Laundry room with washer and dryer">
       </div>
     </div>
-    <p class="gallery-note">Photos coming soon — check back shortly!</p>
   </div>
 </section>
 
