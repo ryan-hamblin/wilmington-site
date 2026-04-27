@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R &amp; K Getaway | Wilmington, NC</title>
+  <meta name="description" content="A beautifully renovated 3-bedroom retreat in Wilmington, NC. Minutes from Wrightsville Beach, Downtown Wilmington, and Carolina Beach.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #1C3A52;
+      --navy-dark: #0F2234;
+      --navy-mid: #2A5478;
+      --teal: #3D9B8C;
+      --teal-light: #5BBCAD;
+      --sand: #F4EFE6;
+      --sand-dark: #E6DDD0;
+      --sand-mid: #D4C9B8;
+      --warm-white: #FDFAF6;
+      --text-dark: #1A1A1A;
+      --text-mid: #4D4D4D;
+      --text-light: #888;
+      --border: #E0D8CC;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); background: var(--warm-white); line-height: 1.6; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    .section-label { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--navy-dark); line-height: 1.2; margin-bottom: 1.5rem; }
+    .divider { width: 3rem; height: 2px; background: var(--teal); margin-bottom: 2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(28, 58, 82, 0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; letter-spacing: 0.05em;
+      color: white; text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal-light); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal-light); }
+    .nav-cta {
+      background: var(--teal); color: white; border: none; padding: 0.6rem 1.4rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+      cursor: pointer; border-radius: 2px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--teal-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: white; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--navy-dark);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0F2234 0%, #1C3A52 40%, #2A5478 100%);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%);
+      background-size: 20px 20px;
+    }
+    .hero-photo-grid {
+      position: absolute; inset: 0;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+      opacity: 0.15;
+    }
+    .hero-photo-grid div {
+      background: var(--teal);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-photo-grid div:nth-child(2) { background: var(--navy-mid); }
+    .hero-photo-grid div:nth-child(3) { background: var(--navy-mid); }
+    .hero-photo-grid div:nth-child(4) { background: var(--teal); }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center; padding: 2rem;
+      max-width: 800px;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--teal-light); margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 300;
+      color: white; line-height: 1; margin-bottom: 0.25rem;
+    }
+    .hero-title em { font-style: italic; color: var(--teal-light); }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 300;
+      color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; letter-spacing: 0.05em;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3rem;
+      margin-bottom: 3rem; flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 400; color: white; display: block; line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); display: block; margin-top: 0.25rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: white; padding: 0.9rem 2.2rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+      border: none; cursor: pointer; border-radius: 2px; text-decoration: none;
+      display: inline-block; transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: white; padding: 0.9rem 2.2rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 400;
+      border: 1px solid rgba(255,255,255,0.35); cursor: pointer; border-radius: 2px;
+      text-decoration: none; display: inline-block; transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .hero-scroll-line { width: 1px; height: 30px; background: rgba(255,255,255,0.25); }
+
+    /* ── PHOTO GALLERY ── */
+    #photos { background: var(--sand); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 8px; margin-top: 2rem;
+    }
+    .gallery-cell {
+      background: var(--sand-dark);
+      border-radius: 2px; overflow: hidden; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery-cell.featured { grid-column: span 2; grid-row: span 2; }
+    .gallery-placeholder {
+      text-align: center; color: var(--text-light);
+    }
+    .gallery-placeholder-icon {
+      font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.4; display: block;
+    }
+    .gallery-placeholder p { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+    .gallery-cell img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-note {
+      margin-top: 1rem; font-size: 0.85rem; color: var(--text-light);
+      font-style: italic; text-align: center;
+    }
+
+    /* ── DETAILS ── */
+    #details { background: var(--warm-white); }
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .amenity-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    }
+    .amenity-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+    }
+    .amenity-icon {
+      width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+      color: var(--teal);
+    }
+    .amenity-text { font-size: 0.9rem; color: var(--text-mid); }
+    .bedroom-list { margin-top: 1rem; }
+    .bedroom-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+    }
+    .bedroom-name { font-size: 0.9rem; color: var(--text-mid); }
+    .bedroom-bed {
+      font-size: 0.8rem; font-weight: 500; color: var(--navy);
+      background: var(--sand); padding: 0.25rem 0.75rem; border-radius: 20px;
+    }
+
+    /* ── LOCATION ── */
+    #location { background: var(--sand); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .distance-list { margin-top: 1rem; }
+    .distance-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+    }
+    .distance-badge {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 600; color: var(--teal);
+      min-width: 60px;
+    }
+    .distance-label { font-size: 0.9rem; color: var(--text-mid); }
+    .map-placeholder {
+      background: var(--sand-dark); border-radius: 4px; height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem; color: var(--text-light);
+    }
+    .map-placeholder p { font-size: 0.8rem; letter-spacing: 0.05em; }
+    .map-link {
+      display: inline-block; margin-top: 1rem;
+      color: var(--teal); font-size: 0.85rem; text-decoration: none;
+      border-bottom: 1px solid var(--teal); padding-bottom: 1px;
+    }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--navy-dark); }
+    #pricing .section-label { color: var(--teal-light); }
+    #pricing .section-title { color: white; }
+    #pricing .divider { background: var(--teal-light); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+    .pricing-card { background: rgba(255,255,255,0.04); padding: 2rem 1.5rem; text-align: center; }
+    .pricing-card:first-child { background: rgba(61,155,140,0.15); }
+    .pricing-duration {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 0.75rem; display: block;
+    }
+    .pricing-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 400; color: white; line-height: 1;
+    }
+    .pricing-amount sup { font-size: 1.1rem; vertical-align: super; }
+    .pricing-note { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; display: block; }
+    .pricing-disclaimer {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+    }
+    .pricing-fee {
+      color: rgba(255,255,255,0.5); font-size: 0.85rem;
+    }
+    .pricing-fee strong { color: rgba(255,255,255,0.85); }
+
+    /* ── AVAILABILITY + CALCULATOR ── */
+    #availability { background: var(--warm-white); }
+    .avail-layout { display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: start; }
+    .calendar-wrapper { }
+    .calendar-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .cal-months { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .cal-month { }
+    .cal-month-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400; color: var(--navy);
+      text-align: center; margin-bottom: 1rem;
+    }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day-label {
+      text-align: center; font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-light); padding: 0.3rem 0;
+    }
+    .cal-day {
+      text-align: center; padding: 0.45rem 0.2rem; font-size: 0.85rem;
+      border-radius: 2px; cursor: pointer; transition: all 0.15s;
+      color: var(--text-mid); position: relative; user-select: none;
+    }
+    .cal-day:hover:not(.blocked):not(.past):not(.empty) { background: var(--sand); color: var(--navy); }
+    .cal-day.past { color: var(--border); cursor: default; }
+    .cal-day.empty { cursor: default; }
+    .cal-day.blocked { color: var(--border); cursor: not-allowed; text-decoration: line-through; }
+    .cal-day.check-in { background: var(--navy); color: white; border-radius: 2px 0 0 2px; }
+    .cal-day.check-out { background: var(--navy); color: white; border-radius: 0 2px 2px 0; }
+    .cal-day.in-range { background: rgba(61,155,140,0.12); color: var(--navy); }
+    .cal-day.today::after {
+      content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 4px; border-radius: 50%; background: var(--teal);
+    }
+    .cal-arrow {
+      background: none; border: 1px solid var(--border); padding: 0.4rem 0.75rem;
+      cursor: pointer; border-radius: 2px; color: var(--navy); font-size: 1rem;
+      transition: all 0.15s;
+    }
+    .cal-arrow:hover { border-color: var(--navy); background: var(--sand); }
+    .cal-month-nav { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--navy); }
+    .cal-legend { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--text-light); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+
+    /* ── COST CALCULATOR ── */
+    .calc-panel {
+      background: var(--navy-dark); border-radius: 4px; padding: 2rem;
+      position: sticky; top: 6rem;
+    }
+    .calc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; color: white; margin-bottom: 0.25rem;
+    }
+    .calc-subtitle { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
+    .calc-dates {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden;
+    }
+    .calc-date-box { background: rgba(255,255,255,0.06); padding: 0.85rem 1rem; }
+    .calc-date-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 0.25rem; }
+    .calc-date-val { font-size: 0.95rem; color: white; font-weight: 400; }
+    .calc-date-val.empty { color: rgba(255,255,255,0.25); font-size: 0.85rem; }
+    .calc-breakdown { margin-bottom: 1.5rem; }
+    .calc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .calc-row:last-child { border-bottom: none; }
+    .calc-row-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .calc-row-val { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+    .calc-total {
+      background: var(--teal); border-radius: 2px; padding: 1.25rem;
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+    }
+    .calc-total-label { font-size: 0.8rem; color: rgba(255,255,255,0.75); letter-spacing: 0.05em; }
+    .calc-total-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 400; color: white;
+    }
+    .calc-empty-state {
+      text-align: center; padding: 2rem 0;
+      color: rgba(255,255,255,0.3); font-size: 0.85rem; line-height: 1.8;
+    }
+    .calc-min-note { font-size: 0.75rem; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 1rem; }
+    .calc-request-btn {
+      width: 100%; padding: 1rem; background: white; color: var(--navy-dark);
+      border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.2s;
+    }
+    .calc-request-btn:hover { background: var(--sand); }
+    .calc-request-btn:disabled { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.3); cursor: default; }
+    .calc-error { font-size: 0.8rem; color: #FF8A80; text-align: center; margin-bottom: 0.75rem; }
+
+    /* ── BOOKING FORM ── */
+    #book { background: var(--sand); }
+    .booking-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+    .booking-info-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 300; color: var(--navy); margin-bottom: 1rem;
+    }
+    .booking-process { margin-top: 2rem; }
+    .process-step {
+      display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--sand-dark);
+    }
+    .process-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; color: var(--teal); font-weight: 400; min-width: 2rem;
+    }
+    .process-text { }
+    .process-title { font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+    .process-desc { font-size: 0.8rem; color: var(--text-light); margin-top: 0.25rem; }
+    .form-card {
+      background: white; border-radius: 4px; padding: 2.5rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: span 2; }
+    label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); }
+    input, select, textarea {
+      padding: 0.75rem 1rem; border: 1px solid var(--border);
+      border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      color: var(--text-dark); background: var(--warm-white);
+      transition: border-color 0.2s; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--teal); background: white; }
+    textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
+    .form-submit {
+      width: 100%; margin-top: 1.5rem; padding: 1rem;
+      background: var(--navy); color: white; border: none; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+      cursor: pointer; transition: background 0.2s; letter-spacing: 0.03em;
+    }
+    .form-submit:hover { background: var(--navy-mid); }
+    .form-note { font-size: 0.75rem; color: var(--text-light); text-align: center; margin-top: 0.75rem; }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+    }
+    .form-success-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .form-success-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .form-success-msg { color: var(--text-mid); font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy-dark); padding: 3rem 2rem; text-align: center; }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 300; color: white; margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--teal-light); font-style: italic; }
+    .footer-addr { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-bottom: 1.5rem; }
+    .footer-bottom { font-size: 0.7rem; color: rgba(255,255,255,0.2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--navy-dark); padding: 1.5rem 2rem; gap: 1.25rem; }
+      .hamburger { display: flex; }
+      .details-grid, .location-grid, .avail-layout, .booking-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .cal-months { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+      .gallery-cell.featured { grid-column: span 2; grid-row: span 1; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .calc-panel { position: static; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 1.25rem; }
+      .section { padding: 3.5rem 0; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .form-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">R <span>&</span> K Getaway</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#photos">Gallery</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#availability">Availability</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Request to Book</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-photo-grid">
+    <div></div><div></div><div></div><div></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Wilmington, North Carolina</p>
+    <h1 class="hero-title">R <em>&</em> K<br>Getaway</h1>
+    <p class="hero-subtitle">602 Pine Valley Drive &nbsp;·&nbsp; Completely Renovated 2024</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-label">Bedrooms</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">2</span>
+        <span class="hero-stat-label">Baths</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">1,800</span>
+        <span class="hero-stat-label">Sq Ft</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">6</span>
+        <span class="hero-stat-label">Guests</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#availability" class="btn-primary">Check Availability</a>
+      <a href="#details" class="btn-outline">Explore the Home</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<section class="section" id="photos" style="background: var(--sand);">
+  <div class="container">
+    <p class="section-label">The Property</p>
+    <h2 class="section-title">A Place to Unwind</h2>
+    <div class="divider"></div>
+    <div class="gallery-grid">
+      <div class="gallery-cell featured">
+        <div class="gallery-placeholder">
+          <span class="gallery-placeholder-icon">
+            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </span>
+          <p>Main Living Area</p>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </span>
+          <p>Kitchen</p>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </span>
+          <p>Primary Bedroom</p>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </span>
+          <p>Back Deck</p>
+        </div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder">
+          <span class="gallery-placeholder-icon" style="font-size: 1.5rem;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </span>
+          <p>Bathroom</p>
+        </div>
+      </div>
+    </div>
+    <p class="gallery-note">Photos coming soon — check back shortly!</p>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="section" id="details">
+  <div class="container">
+    <p class="section-label">Inside the Home</p>
+    <h2 class="section-title">Everything You Need</h2>
+    <div class="divider"></div>
+    <div class="details-grid">
+      <div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem;">Bedrooms</h3>
+        <div class="bedroom-list">
+          <div class="bedroom-item">
+            <span class="bedroom-name">Primary Suite</span>
+            <span class="bedroom-bed">King</span>
+          </div>
+          <div class="bedroom-item">
+            <span class="bedroom-name">Bedroom 2</span>
+            <span class="bedroom-bed">Queen</span>
+          </div>
+          <div class="bedroom-item">
+            <span class="bedroom-name">Bedroom 3</span>
+            <span class="bedroom-bed">Two Twins</span>
+          </div>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;">
+          Completely renovated in 2024, this fully furnished home offers generous living space 
+          across 1,800 square feet with 2 full bathrooms — everything updated and move-in ready for your stay.
+        </p>
+      </div>
+      <div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem;">Amenities</h3>
+        <div class="amenity-grid">
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <span class="amenity-text">Fully Furnished</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+            <span class="amenity-text">High-Speed WiFi</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+            <span class="amenity-text">Full Kitchen</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 21h10M12 21V3m0 0l-3 3m3-3l3 3"/></svg>
+            <span class="amenity-text">BBQ Grill</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 6v3h-7V8zm2 9a1 1 0 100 2 1 1 0 000-2zm-8 0a1 1 0 100 2 1 1 0 000-2z"/></svg>
+            <span class="amenity-text">Ample Parking</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="amenity-text">Back Deck</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span class="amenity-text">Washer / Dryer</span>
+          </div>
+          <div class="amenity-item">
+            <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span class="amenity-text">Smart TV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section" id="location" style="background: var(--sand);">
+  <div class="container">
+    <p class="section-label">Getting Around</p>
+    <h2 class="section-title">Right in the Heart of Wilmington</h2>
+    <div class="divider"></div>
+    <div class="location-grid">
+      <div>
+        <p style="font-size: 0.95rem; color: var(--text-mid); margin-bottom: 1.5rem; line-height: 1.8;">
+          Located in the welcoming Pine Valley neighborhood, you're perfectly positioned 
+          between Wilmington's vibrant downtown and its beloved beaches — with everything 
+          you need just minutes away.
+        </p>
+        <div class="distance-list">
+          <div class="distance-item">
+            <span class="distance-badge">Walk</span>
+            <span class="distance-label">Pine Valley Country Club &amp; Pool</span>
+          </div>
+          <div class="distance-item">
+            <span class="distance-badge">5 min</span>
+            <span class="distance-label">Grocery &amp; Liquor Stores</span>
+          </div>
+          <div class="distance-item">
+            <span class="distance-badge">15 min</span>
+            <span class="distance-label">Wilmington International Airport</span>
+          </div>
+          <div class="distance-item">
+            <span class="distance-badge">15 min</span>
+            <span class="distance-label">Historic Downtown Wilmington</span>
+          </div>
+          <div class="distance-item">
+            <span class="distance-badge">15 min</span>
+            <span class="distance-label">Wrightsville Beach</span>
+          </div>
+          <div class="distance-item">
+            <span class="distance-badge">15 min</span>
+            <span class="distance-label">Carolina Beach</span>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=602+Pine+Valley+Drive+Wilmington+NC+28412" target="_blank" rel="noopener" class="map-link">Get directions →</a>
+      </div>
+      <div>
+        <div class="map-placeholder">
+          <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" style="opacity:0.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p style="margin-top:0.5rem;">602 Pine Valley Drive</p>
+          <p>Wilmington, NC 28412</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <p class="section-label">Rates</p>
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <div class="divider"></div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <span class="pricing-duration">Per Night</span>
+        <div class="pricing-amount"><sup>$</sup>300</div>
+        <span class="pricing-note">3-night minimum</span>
+      </div>
+      <div class="pricing-card">
+        <span class="pricing-duration">Per Week</span>
+        <div class="pricing-amount"><sup>$</sup>1,500</div>
+        <span class="pricing-note">7 nights</span>
+      </div>
+      <div class="pricing-card">
+        <span class="pricing-duration">Two Weeks</span>
+        <div class="pricing-amount"><sup>$</sup>2,500</div>
+        <span class="pricing-note">14 nights</span>
+      </div>
+      <div class="pricing-card">
+        <span class="pricing-duration">Monthly</span>
+        <div class="pricing-amount"><sup>$</sup>4,000</div>
+        <span class="pricing-note">30 nights</span>
+      </div>
+    </div>
+    <div class="pricing-disclaimer">
+      <span class="pricing-fee"><strong>$125</strong> cleaning fee</span>
+      <span class="pricing-fee"><strong>7%</strong> NC sales tax</span>
+      <span class="pricing-fee"><strong>6%</strong> occupancy tax</span>
+      <span class="pricing-fee">All taxes &amp; fees shown in total estimate</span>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABILITY + CALCULATOR -->
+<section class="section" id="availability">
+  <div class="container">
+    <p class="section-label">Plan Your Stay</p>
+    <h2 class="section-title">Check Availability</h2>
+    <div class="divider"></div>
+    <div class="avail-layout">
+      <!-- CALENDAR -->
+      <div class="calendar-wrapper">
+        <div class="calendar-nav">
+          <button class="cal-arrow" id="calPrev">&#8592;</button>
+          <span class="cal-month-nav" id="calMonthLabel"></span>
+          <button class="cal-arrow" id="calNext">&#8594;</button>
+        </div>
+        <p id="calStatus" style="font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;">Loading availability…</p>
+        <div class="cal-months" id="calMonths"></div>
+        <div class="cal-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: var(--navy);"></div>
+            <span>Selected</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: rgba(61,155,140,0.2);"></div>
+            <span>Your stay</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: var(--border);"></div>
+            <span>Unavailable</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COST CALCULATOR -->
+      <div class="calc-panel" id="calcPanel">
+        <div class="calc-title">Cost Estimate</div>
+        <p class="calc-subtitle">Select dates on the calendar to calculate</p>
+        <div class="calc-dates">
+          <div class="calc-date-box">
+            <span class="calc-date-label">Check-in</span>
+            <span class="calc-date-val empty" id="calcCheckin">Select date</span>
+          </div>
+          <div class="calc-date-box">
+            <span class="calc-date-label">Check-out</span>
+            <span class="calc-date-val empty" id="calcCheckout">Select date</span>
+          </div>
+        </div>
+        <div id="calcContent">
+          <div class="calc-empty-state" id="calcEmpty">
+            Select your check-in and check-out<br>dates to see a full price breakdown.
+          </div>
+          <div id="calcBreakdown" style="display:none">
+            <div class="calc-breakdown" id="calcRows"></div>
+            <div class="calc-total">
+              <span class="calc-total-label">Estimated Total</span>
+              <span class="calc-total-amount" id="calcTotalAmt"></span>
+            </div>
+            <p class="calc-min-note">Booking not confirmed until owner approval.</p>
+          </div>
+          <div id="calcErrorMsg" class="calc-error" style="display:none"></div>
+        </div>
+        <button class="calc-request-btn" id="calcRequestBtn" disabled onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">
+          Request to Book
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING REQUEST -->
+<section class="section" id="book" style="background: var(--sand);">
+  <div class="container">
+    <div class="booking-layout">
+      <div>
+        <p class="section-label">Reservations</p>
+        <h2 class="section-title">Request Your Stay</h2>
+        <div class="divider"></div>
+        <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2rem;">
+          This is a private, friends-and-family property. Submit your request 
+          and the owner will reach out to confirm availability, answer any questions, 
+          and arrange details directly.
+        </p>
+        <div class="booking-process">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <div class="process-text">
+              <div class="process-title">Submit your request</div>
+              <div class="process-desc">Fill in your dates, group size, and any questions.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <div class="process-text">
+              <div class="process-title">Owner reviews &amp; responds</div>
+              <div class="process-desc">You'll hear back within 24 hours to confirm availability.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <div class="process-text">
+              <div class="process-title">Finalize &amp; pay</div>
+              <div class="process-desc">Arrange payment details directly with the owner. No platform fees.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="process-num">04</span>
+            <div class="process-text">
+              <div class="process-title">Enjoy your stay</div>
+              <div class="process-desc">Check-in instructions sent prior to arrival.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="first_name" required placeholder="Jane">
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="last_name" required placeholder="Smith">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="jane@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+            </div>
+            <div class="form-group">
+              <label for="checkin">Check-in Date</label>
+              <input type="date" id="checkinField" name="check_in" required>
+            </div>
+            <div class="form-group">
+              <label for="checkout">Check-out Date</label>
+              <input type="date" id="checkoutField" name="check_out" required>
+            </div>
+            <div class="form-group">
+              <label for="guests">Number of Guests</label>
+              <select id="guests" name="guests">
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5">5 guests</option>
+                <option value="6" selected>6 guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="howheard">How did you hear about us?</label>
+              <select id="howheard" name="how_heard">
+                <option>Friends &amp; family referral</option>
+                <option>Direct link</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="message">Questions or Special Requests</label>
+              <textarea id="message" name="message" placeholder="Tell us a bit about your trip, any questions about the property, or special accommodations needed…"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="_subject" value="New Booking Request – R & K Getaway">
+          <input type="text" name="_gotcha" style="display:none">
+          <button type="submit" class="form-submit">Submit Booking Request</button>
+          <p class="form-note">No payment is collected here. This is a request only — the owner will contact you to confirm.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <span class="form-success-icon">✓</span>
+          <div class="form-success-title">Request Received!</div>
+          <p class="form-success-msg">Thank you for your interest in R &amp; K Getaway. The owner will be in touch within 24 hours to confirm your dates and answer any questions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">R <span>&amp; K</span> Getaway</div>
+  <p class="footer-addr">602 Pine Valley Drive · Wilmington, NC 28412</p>
+  <p class="footer-bottom">Private rental property. Not listed on third-party platforms. Friends &amp; family only.</p>
+</footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // ── BLOCKED DATES (live from Google Calendar) ──
+  let blockedRanges = [];
+  let calendarLoaded = false;
+
+  async function loadAvailability() {
+    const calEl = document.getElementById('calMonths');
+    const statusEl = document.getElementById('calStatus');
+    try {
+      const res = await fetch('/.netlify/functions/availability');
+      const data = await res.json();
+      blockedRanges = data.blockedRanges || [];
+      calendarLoaded = true;
+      if (statusEl) statusEl.remove();
+      renderCalendars();
+    } catch (e) {
+      calendarLoaded = true;
+      if (statusEl) statusEl.textContent = 'Could not load live availability. Please contact us to confirm dates.';
+      renderCalendars();
+    }
+  }
+
+  function isBlocked(dateStr) {
+    for (const r of blockedRanges) {
+      if (dateStr >= r.start && dateStr <= r.end) return true;
+    }
+    return false;
+  }
+
+  function isPast(dateStr) {
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    return new Date(dateStr + 'T00:00:00') < today;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function dateStr(y, m, d) {
+    return `${y}-${pad(m+1)}-${pad(d)}`;
+  }
+
+  function nightsBetween(a, b) {
+    const da = new Date(a + 'T00:00:00');
+    const db = new Date(b + 'T00:00:00');
+    return Math.round((db - da) / 86400000);
+  }
+
+  // ── PRICING LOGIC ──
+  function calcRentalBase(nights) {
+    if (nights >= 30) {
+      const months = Math.floor(nights / 30);
+      const extra = nights % 30;
+      return months * 4000 + extra * 300;
+    } else if (nights >= 14) {
+      const extra = nights - 14;
+      return 2500 + extra * 300;
+    } else if (nights >= 7) {
+      const extra = nights - 7;
+      return 1500 + extra * 300;
+    } else {
+      return nights * 300;
+    }
+  }
+
+  function getRateLabel(nights) {
+    if (nights >= 30) return 'Monthly rate + extra nights';
+    if (nights >= 14) return '2-week rate + extra nights';
+    if (nights >= 7) return 'Weekly rate + extra nights';
+    return `${nights} nights × $300`;
+  }
+
+  // ── CALENDAR STATE ──
+  let checkIn = null, checkOut = null, selectingCheckout = false;
+  const today = new Date();
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+
+  function renderCalendars() {
+    const container = document.getElementById('calMonths');
+    container.innerHTML = '';
+    const label = document.getElementById('calMonthLabel');
+
+    const months = [
+      { year: viewYear, month: viewMonth },
+      { year: viewMonth === 11 ? viewYear + 1 : viewYear, month: (viewMonth + 1) % 12 }
+    ];
+
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    label.textContent = `${monthNames[viewMonth]} ${viewYear} — ${monthNames[months[1].month]} ${months[1].year}`;
+
+    months.forEach(({year, month}) => {
+      const div = document.createElement('div');
+      div.className = 'cal-month';
+
+      const title = document.createElement('div');
+      title.className = 'cal-month-title';
+      title.textContent = `${monthNames[month]} ${year}`;
+      div.appendChild(title);
+
+      const grid = document.createElement('div');
+      grid.className = 'cal-grid';
+
+      ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => {
+        const lbl = document.createElement('div');
+        lbl.className = 'cal-day-label';
+        lbl.textContent = d;
+        grid.appendChild(lbl);
+      });
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const todayStr = dateStr(today.getFullYear(), today.getMonth(), today.getDate());
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        grid.appendChild(empty);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const ds = dateStr(year, month, d);
+        const cell = document.createElement('div');
+        cell.className = 'cal-day';
+        cell.textContent = d;
+
+        if (ds === todayStr) cell.classList.add('today');
+        if (isPast(ds)) { cell.classList.add('past'); }
+        else if (isBlocked(ds)) { cell.classList.add('blocked'); }
+        else {
+          if (ds === checkIn) cell.classList.add('check-in');
+          else if (ds === checkOut) cell.classList.add('check-out');
+          else if (checkIn && checkOut && ds > checkIn && ds < checkOut) cell.classList.add('in-range');
+
+          cell.addEventListener('click', () => handleDateClick(ds));
+        }
+        grid.appendChild(cell);
+      }
+
+      div.appendChild(grid);
+      container.appendChild(div);
+    });
+  }
+
+  function handleDateClick(ds) {
+    if (!checkIn || (checkIn && checkOut)) {
+      checkIn = ds; checkOut = null; selectingCheckout = true;
+    } else if (selectingCheckout) {
+      if (ds <= checkIn) { checkIn = ds; checkOut = null; return; }
+      // Check no blocked dates in range
+      let hasBad = false;
+      const a = new Date(checkIn + 'T00:00:00');
+      const b = new Date(ds + 'T00:00:00');
+      for (let d = new Date(a); d < b; d.setDate(d.getDate()+1)) {
+        const s = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+        if (isBlocked(s)) { hasBad = true; break; }
+      }
+      if (hasBad) {
+        showCalcError('Your selected range includes unavailable dates. Please adjust.');
+        checkIn = null; checkOut = null; selectingCheckout = false;
+        renderCalendars(); updateCalc(); return;
+      }
+      checkOut = ds; selectingCheckout = false;
+    }
+    renderCalendars();
+    updateCalc();
+    syncFormDates();
+  }
+
+  function showCalcError(msg) {
+    document.getElementById('calcErrorMsg').textContent = msg;
+    document.getElementById('calcErrorMsg').style.display = 'block';
+    document.getElementById('calcBreakdown').style.display = 'none';
+    document.getElementById('calcEmpty').style.display = 'none';
+  }
+
+  function updateCalc() {
+    const ciEl = document.getElementById('calcCheckin');
+    const coEl = document.getElementById('calcCheckout');
+    const emptyEl = document.getElementById('calcEmpty');
+    const breakdownEl = document.getElementById('calcBreakdown');
+    const errorEl = document.getElementById('calcErrorMsg');
+    const btn = document.getElementById('calcRequestBtn');
+
+    ciEl.textContent = checkIn ? formatDate(checkIn) : 'Select date';
+    ciEl.className = 'calc-date-val' + (checkIn ? '' : ' empty');
+    coEl.textContent = checkOut ? formatDate(checkOut) : 'Select date';
+    coEl.className = 'calc-date-val' + (checkOut ? '' : ' empty');
+
+    errorEl.style.display = 'none';
+
+    if (!checkIn || !checkOut) {
+      emptyEl.style.display = 'block';
+      breakdownEl.style.display = 'none';
+      btn.disabled = true;
+      return;
+    }
+
+    const nights = nightsBetween(checkIn, checkOut);
+    if (nights < 3) {
+      showCalcError('Minimum stay is 3 nights. Please select a longer stay.');
+      btn.disabled = true;
+      return;
+    }
+
+    const base = calcRentalBase(nights);
+    const cleaning = 125;
+    const subtotal = base + cleaning;
+    const salesTax = Math.round(subtotal * 0.07);
+    const occupancyTax = Math.round(subtotal * 0.06);
+    const total = subtotal + salesTax + occupancyTax;
+
+    const rows = [
+      { label: getRateLabel(nights), val: `$${base.toLocaleString()}` },
+      { label: 'Cleaning fee', val: `$${cleaning}` },
+      { label: 'Subtotal', val: `$${subtotal.toLocaleString()}`, bold: true },
+      { label: 'NC Sales Tax (7%)', val: `$${salesTax.toLocaleString()}` },
+      { label: 'Occupancy Tax (6%)', val: `$${occupancyTax.toLocaleString()}` },
+    ];
+
+    const rowsEl = document.getElementById('calcRows');
+    rowsEl.innerHTML = rows.map(r =>
+      `<div class="calc-row">
+        <span class="calc-row-label" style="${r.bold ? 'color:rgba(255,255,255,0.85);font-weight:500' : ''}">${r.label}</span>
+        <span class="calc-row-val">${r.val}</span>
+      </div>`
+    ).join('');
+
+    document.getElementById('calcTotalAmt').textContent = `$${total.toLocaleString()}`;
+    emptyEl.style.display = 'none';
+    breakdownEl.style.display = 'block';
+    btn.disabled = false;
+  }
+
+  function syncFormDates() {
+    if (checkIn) document.getElementById('checkinField').value = checkIn;
+    if (checkOut) document.getElementById('checkoutField').value = checkOut;
+  }
+
+  document.getElementById('calPrev').addEventListener('click', () => {
+    viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+    renderCalendars();
+  });
+  document.getElementById('calNext').addEventListener('click', () => {
+    viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+    renderCalendars();
+  });
+
+  loadAvailability();
+  updateCalc();
+
+  // ── BOOKING FORM ──
+  const bookingForm = document.getElementById('bookingForm');
+  bookingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = bookingForm.querySelector('.form-submit');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(bookingForm.action, {
+        method: 'POST',
+        body: new FormData(bookingForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        bookingForm.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'Submit Booking Request';
+        btn.disabled = false;
+        alert('There was an error. Please try again or contact us directly.');
+      }
+    } catch {
+      btn.textContent = 'Submit Booking Request';
+      btn.disabled = false;
+      alert('There was a network error. Please try again.');
+    }
+  });
+</script>
+</body>
+</html>
