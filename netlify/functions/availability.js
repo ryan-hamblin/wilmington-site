@@ -1,5 +1,5 @@
 const ICAL_URL =
-  "https://calendar.google.com/calendar/ical/3eca0f9b7374b506571f2c6c419bd8bd603556b500c4c22045a4c329fa6e68c3%40group.calendar.google.com/public/basic.ics";
+  "https://calendar.google.com/calendar/u/0?cid=N2UxOTM2NzJmZWVkMjNkNzJjYTg0MzhmZjE3NjQwNmI4YzgyYWQ1NjAzNzRhYzg0YzEwYjljMDJlYmZjZTMzZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t";
 
 function parseICalDate(str) {
   if (!str) return null;
