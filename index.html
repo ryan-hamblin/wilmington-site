@@ -652,22 +652,22 @@
     <div class="pricing-grid">
       <div class="pricing-card">
         <span class="pricing-duration">Per Night</span>
-        <div class="pricing-amount"><sup>$</sup>300</div>
+        <div class="pricing-amount"><sup>$</sup>280</div>
         <span class="pricing-note">3-night minimum</span>
       </div>
       <div class="pricing-card">
         <span class="pricing-duration">Per Week</span>
-        <div class="pricing-amount"><sup>$</sup>1,500</div>
+        <div class="pricing-amount"><sup>$</sup>1,400</div>
         <span class="pricing-note">7 nights</span>
       </div>
       <div class="pricing-card">
         <span class="pricing-duration">Two Weeks</span>
-        <div class="pricing-amount"><sup>$</sup>2,500</div>
+        <div class="pricing-amount"><sup>$</sup>2,400</div>
         <span class="pricing-note">14 nights</span>
       </div>
       <div class="pricing-card">
         <span class="pricing-duration">Monthly</span>
-        <div class="pricing-amount"><sup>$</sup>4,000</div>
+        <div class="pricing-amount"><sup>$</sup>3,600</div>
         <span class="pricing-note">30 nights</span>
       </div>
     </div>
@@ -713,7 +713,7 @@
       </div>
 
       <!-- COST CALCULATOR -->
-      <!-- <div class="calc-panel" id="calcPanel">
+      <div class="calc-panel" id="calcPanel">
         <div class="calc-title">Cost Estimate</div>
         <p class="calc-subtitle">Select dates on the calendar to calculate</p>
         <div class="calc-dates">
@@ -743,7 +743,7 @@
         <button class="calc-request-btn" id="calcRequestBtn" disabled onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">
           Request to Book
         </button>
-      </div> -->
+      </div>
     </div>
   </div>
 </section>
@@ -940,15 +940,15 @@
     if (nights >= 30) {
       const months = Math.floor(nights / 30);
       const extra = nights % 30;
-      return months * 4000 + extra * 300;
+      return months * 3600 + extra * 280;
     } else if (nights >= 14) {
       const extra = nights - 14;
-      return 2500 + extra * 300;
+      return 2400 + extra * 280;
     } else if (nights >= 7) {
       const extra = nights - 7;
-      return 1500 + extra * 300;
+      return 1400 + extra * 280;
     } else {
-      return nights * 300;
+      return nights * 280;
     }
   }
 
@@ -956,7 +956,7 @@
     if (nights >= 30) return 'Monthly rate + extra nights';
     if (nights >= 14) return '2-week rate + extra nights';
     if (nights >= 7) return 'Weekly rate + extra nights';
-    return `${nights} nights × $300`;
+    return `${nights} nights × $280`;
   }
 
   // ── CALENDAR STATE ──
